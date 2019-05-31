@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -52,7 +52,9 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|in:admin,agent,customer', //validate role input
+            'phone' => 'required',
+            'ban_id' => 'required|max:5',
+            'role' => 'required|in:admin,office,press,agent,customer', //validate role input
 
         ]);
     }
@@ -65,10 +67,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
+
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'ban_id' => $data['ban_id'],
             'role' => $data['role'],
         ]);
     }

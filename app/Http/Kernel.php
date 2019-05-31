@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
          'admin' => 'App\Http\Middleware\Admin',
          'agent' => 'App\Http\Middleware\Agent',
          'customer' => 'App\Http\Middleware\Customer',
+         'press'    => 'App\Http\Middleware\Press',
     ];
 }
